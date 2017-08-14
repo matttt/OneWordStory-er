@@ -1,0 +1,27 @@
+<html ng-app="StoryApp">
+
+<body>
+    <div id="storyController" ng-controller="storyController">
+        <div style="width: 92%; border: 2px solid #555555; margin-left: 4%; border-radius: 25px; font-family: arial;">
+            <div style="width: 90%; margin-left: 5%; min-height: 40px">
+                <span ng-repeat="word in story.body" style="font-size: 24pt"><a ng-style="{'background-color': word.writer.color || 'white'}">{{word.text}} </a></span>
+            </div>
+        </div>
+        <br><br>
+        <input type="text" ng-keypress="submitWord($event)" ng-model="inputBox" style="width: 15%; font-size: 16pt; margin-left: 42.5%; background-color: rgba(0,0,0,0); color: #AAAAAA;"
+            autofocus></input>
+        <br>
+        <span>Connected writers:</span><br>
+        <span ng-repeat="writer in story.writers" ng-style="{'background-color': writer.color}">{{writer.nickname}}<br></span>
+    </div>
+</body>
+
+<head>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/app.js"></script>
+
+</head>
+
+</html>
